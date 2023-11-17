@@ -1,4 +1,5 @@
 default_vpc_id = "vpc-05642ce42b99a7fae"
+default_vpc_cidr_block = "172.31.0.0/16"
 
 
 vpc = {
