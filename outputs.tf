@@ -2,7 +2,7 @@ output "subnets" {
   value = module.vpc
 }
 
-output "vpc_id" {
+output "vpc_id_test" {
   value = local.vpc_id
 }
 output "def-sub" {
