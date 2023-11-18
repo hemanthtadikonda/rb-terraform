@@ -34,7 +34,7 @@ alb = {
     internal = false
     lb_type = "application"
     sg_port = 80
-    sg_ingress_cidr = "0.0.0.0/0"
+    sg_ingress_cidr = [ "0.0.0.0/0" ]
 
 
   }
