@@ -10,5 +10,5 @@ output "def-sub" {
 }
 
 output "app-subnets" {
-  value = local.app_subents
+  value = local.app_subnets
 }
