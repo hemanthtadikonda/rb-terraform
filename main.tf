@@ -24,6 +24,9 @@ module "alb" {
   vpc_id = each.value["internal"] ? local.vpc_id : var.default_vpc_id
   subnets = each.value["internal"] ? local.app_subnets : data.aws_subnets.main.ids
 
+  env = var.env
+  tags = var.tags
+
 
 
 }
