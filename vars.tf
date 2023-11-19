@@ -7,3 +7,4 @@ variable "def_route_table_id" {}
 variable "vpc" {}
 variable "alb" {}
 variable "docdb" {}
+variable "rds" {}

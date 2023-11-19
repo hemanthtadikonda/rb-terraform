@@ -52,6 +52,41 @@ module "docdb" {
 
 }
 
+module "rds" {
+  source = "git::https://github.com/hemanthtadikonda/rb-tf-rds.git"
+
+  env    = var.env
+  tags   = var.tags
+
+  for_each =  var.rds
+  vpc_id    = local.vpc_id
+  subnet_ids = local.db_subnets
+  sg_ingress_cidr = local.app_subnets_cidr
+
+  pg_family = each.value["pg_family"]
+  rds_type  = each.value["rds_type"]
+  rds_port  = each.value["rds_port"]
+  engine    = each.value["engine"]
+  engine_version = each.value["engine_version"]
+  skip_final_snapshot = each.value["skip_final_snapshot"]
+  preferred_backup_window = each.value["preferred_backup_window"]
+  backup_retention_period = each.value["backup_retention_period"]
+  instance_count  = each.value["instance_count"]
+  instance_class = each.value["instance_class"]
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
