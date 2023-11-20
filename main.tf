@@ -96,6 +96,22 @@ module "elasticache" {
 
 }
 
+module "rabbitmq" {
+  source = "git::https://github.com/hemanthtadikonda/rb-tf-rabbitmq.git"
+  env = var.env
+  tags = var.tags
+  vpc_id = local.vpc_id
+  subnet_id = local.db_subnets
+  sg_ingress_cidr = local.app_subnets_cidr
+  zone_id   = var.zone_id
+  instance_type = each.value["instance_type"]
+  ssh_ingress_cidr = var.ssh_ingress_cidr
+
+
+
+}
+
+
 
 
 
