@@ -4,6 +4,7 @@ def_route_table_id     = "rtb-0dbc8b1b5e435955e"
 env  = "qa"
 zone_id = "Z09760323G7SC2VABFTOY"
 ssh_ingress_cidr = [ "172.31.94.218/32" ]
+az = ["us-east-1a","us-east-1b"]
 
 
 tags = {
