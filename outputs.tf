@@ -28,7 +28,7 @@ output "lb_pub_dns" {
   value = lookup(lookup(lookup(module.alb , "public" , null) , "alb" ,null), "dns_name",null)
 }
 output "lb_pub_listener" {
-  value = lookup(lookup(lookup(module.alb , "internal" ,null ), "lb_listener" , null) , "arn" , null )
+  value = lookup(lookup(lookup(module.alb , "public" ,null ), "lb_listener" , null) , "arn" , null )
 }
 
 output "private_lb_add_details" {

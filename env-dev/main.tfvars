@@ -99,3 +99,36 @@ rabbitmq = {
   }
 }
 
+app = {
+  frontend = {
+    app_port  = 80
+    lb_priority = 1
+
+  }
+  catalogue = {
+    app_port  = 8080
+    lb_priority = 2
+
+  }
+  user = {
+    app_port  = 8080
+    lb_priority = 3
+
+  }
+  cart = {
+    app_port  = 8080
+    lb_priority = 4
+
+  }
+  shipping = {
+    app_port  = 8080
+    lb_priority = 5
+
+  }
+  payment = {
+    app_port  = 8080
+    lb_priority = 6
+
+  }
+}
+

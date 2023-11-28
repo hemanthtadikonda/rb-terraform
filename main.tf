@@ -111,9 +111,28 @@ module "alb" {
 #
 #}
 
+module "app" {
+  source = "git::https://github.com/hemanthtadikonda/rb-tf-alb.git"
+  for_each = var.app
 
+  env = var.env
+  tags = var.tags
+  ssh_ingress_cidr = var.ssh_ingress_cidr
+  default_vpc_id = var.default_vpc_id
+  zone_id        = var.zone_id
 
+  vpc_id = local.vpc_id
+  sg_ingress_cidr = local.app_subnets_cidr
 
+  component  = each.key
+  app_port   = each.value["app_port"]
+  lb_priority = each.value["lb_priority"]
+
+  public_alb_name  = lookup(lookup(lookup(module.alb , "public" , null) , "alb" ,null), "dns_name",null)
+  private_alb_name = lookup(lookup(lookup(module.alb , "internal" , null) , "alb" ,null), "dns_name",null)
+  public_alb_listener =lookup(lookup(lookup(module.alb , "public" ,null ), "lb_listener" , null) , "arn" , null )
+  private_alb_listener = lookup(lookup(lookup(module.alb , "internal" ,null ), "lb_listener" , null) , "arn" , null )
+}
 
 
 
