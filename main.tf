@@ -113,7 +113,7 @@ module "alb" {
 
 module "app" {
   depends_on = [module.alb]
-  source = "git::https://github.com/hemanthtadikonda/rb-tf-alb.git"
+  source = "git::https://github.com/hemanthtadikonda/rb-tf-app.git"
   for_each = var.app
 
   env = var.env
