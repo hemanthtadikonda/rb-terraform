@@ -30,3 +30,7 @@ output "lb_pub_dns" {
 output "lb_pub_listener" {
   value = lookup(lookup(lookup(module.alb , "internal" ,null ), "lb_listener" , null) , "arn" , null )
 }
+
+output "private_lb_add_details" {
+  value = data.dns_aaaa_record_set.private_lb_add
+}
