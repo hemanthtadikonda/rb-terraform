@@ -32,5 +32,5 @@ output "lb_pub_listener" {
 }
 
 output "private_lb_add_details" {
-  value = data.dns_aaaa_record_set.private_lb_add
+  value = data.dns_aaaa_record_set.private_lb_add.addrs
 }
