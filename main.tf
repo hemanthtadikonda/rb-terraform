@@ -112,6 +112,7 @@ module "alb" {
 #}
 
 module "app" {
+  depends_on = [module.alb]
   source = "git::https://github.com/hemanthtadikonda/rb-tf-alb.git"
   for_each = var.app
 
