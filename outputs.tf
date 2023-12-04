@@ -1,6 +1,6 @@
-#output "subnets" {
-#  value = module.vpc
-#}
+output "subnets" {
+  value = module.vpc
+}
 #
 #output "vpc_id_test" {
 #  value = local.vpc_id
@@ -13,7 +13,7 @@
 #  value = local.app_subnets
 #}
 
-output "app-subnets" {
+output "db-subnets" {
   value = local.db_subnets
 }
 
