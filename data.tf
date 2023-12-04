@@ -5,6 +5,6 @@ data "aws_subnets" "main" {
   }
 }
 
-data "dns_a_record_set" "private_lb_add" {
-  host = lookup(lookup(lookup(module.alb , "internal" , null) , "alb" ,null), "dns_name",null)
-}
+#data "dns_a_record_set" "private_lb_add" {
+#  host = lookup(lookup(lookup(module.alb , "internal" , null) , "alb" ,null), "dns_name",null)
+#}
