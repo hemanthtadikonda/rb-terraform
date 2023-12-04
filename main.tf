@@ -98,6 +98,7 @@ module "elasticache" {
 
 module "rabbitmq" {
   source = "git::https://github.com/hemanthtadikonda/rb-tf-rabbitmq.git"
+  for_each = var.rabbitmq
   env = var.env
   tags = var.tags
   vpc_id = local.vpc_id
