@@ -30,90 +30,90 @@ module "alb" {
 
 }
 
-#module "docdb" {
-#  source = "git::https://github.com/hemanthtadikonda/rb-tf-docdb.git"
-#  env    = var.env
-#  tags   = var.tags
-#
-#  for_each = var.docdb
-#
-#  subnet_ids              = local.db_subnets
-#  vpc_id                  = local.vpc_id
-#  sg_ingress_cidr         = local.app_subnets_cidr
-#  pg_family               = each.value["pg_family"]
-#  engine                  = each.value["engine"]
-#  engine_version          = each.value["engine_version"]
-#  backup_retention_period = each.value["backup_retention_period"]
-#  preferred_backup_window = each.value["preferred_backup_window"]
-#  skip_final_snapshot     = each.value["skip_final_snapshot"]
-#  instance_count          = each.value ["instance_count"]
-#  instance_class          = each.value["instance_class"]
-#
-#}
+module "docdb" {
+  source = "git::https://github.com/hemanthtadikonda/rb-tf-docdb.git"
+  env    = var.env
+  tags   = var.tags
 
-#module "rds" {
-#  source = "git::https://github.com/hemanthtadikonda/rb-tf-rds.git"
-#
-#  env  = var.env
-#  tags = var.tags
-#
-#  for_each        = var.rds
-#  vpc_id          = local.vpc_id
-#  subnet_ids      = local.db_subnets
-#  sg_ingress_cidr = local.app_subnets_cidr
-#
-#  pg_family               = each.value["pg_family"]
-#  rds_type                = each.value["rds_type"]
-#  rds_port                = each.value["rds_port"]
-#  engine                  = each.value["engine"]
-#  engine_version          = each.value["engine_version"]
-#  skip_final_snapshot     = each.value["skip_final_snapshot"]
-#  preferred_backup_window = each.value["preferred_backup_window"]
-#  backup_retention_period = each.value["backup_retention_period"]
-#  instance_count          = each.value["instance_count"]
-#  instance_class          = each.value["instance_class"]
-#
-#}
-#
-#module "elasticache" {
-#  source = "git::https://github.com/hemanthtadikonda/rb-tf-elasticache.git"
-#
-#  env  = var.env
-#  tags = var.tags
-#
-#  for_each        = var.elasticache
-#  subnet_ids      = local.db_subnets
-#  vpc_id          = local.vpc_id
-#  sg_ingress_cidr = local.app_subnets_cidr
-#
-#  elasticache_type = each.value["elasticache_type"]
-#  pg_family        = each.value["pg_family"]
-#  engine           = each.value["engine"]
-#  engine_version   = each.value["engine_version"]
-#  db_port          = each.value["db_port"]
-#  node_type        = each.value["node_type"]
-#  num_cache_nodes  = each.value["num_cache_nodes"]
-#
-#}
-#
-#module "rabbitmq" {
-#  source = "git::https://github.com/hemanthtadikonda/rb-tf-rabbitmq.git"
-#  for_each = var.rabbitmq
-#  env = var.env
-#  tags = var.tags
-#  vpc_id = local.vpc_id
-#  subnet_id = local.db_subnets
-#  sg_ingress_cidr = local.app_subnets_cidr
-#  zone_id   = var.zone_id
-#  instance_type = each.value["instance_type"]
-#  ssh_ingress_cidr = var.ssh_ingress_cidr
-#
-#
-#
-#}
+  for_each = var.docdb
+
+  subnet_ids              = local.db_subnets
+  vpc_id                  = local.vpc_id
+  sg_ingress_cidr         = local.app_subnets_cidr
+  pg_family               = each.value["pg_family"]
+  engine                  = each.value["engine"]
+  engine_version          = each.value["engine_version"]
+  backup_retention_period = each.value["backup_retention_period"]
+  preferred_backup_window = each.value["preferred_backup_window"]
+  skip_final_snapshot     = each.value["skip_final_snapshot"]
+  instance_count          = each.value ["instance_count"]
+  instance_class          = each.value["instance_class"]
+
+}
+
+module "rds" {
+  source = "git::https://github.com/hemanthtadikonda/rb-tf-rds.git"
+
+  env  = var.env
+  tags = var.tags
+
+  for_each        = var.rds
+  vpc_id          = local.vpc_id
+  subnet_ids      = local.db_subnets
+  sg_ingress_cidr = local.app_subnets_cidr
+
+  pg_family               = each.value["pg_family"]
+  rds_type                = each.value["rds_type"]
+  rds_port                = each.value["rds_port"]
+  engine                  = each.value["engine"]
+  engine_version          = each.value["engine_version"]
+  skip_final_snapshot     = each.value["skip_final_snapshot"]
+  preferred_backup_window = each.value["preferred_backup_window"]
+  backup_retention_period = each.value["backup_retention_period"]
+  instance_count          = each.value["instance_count"]
+  instance_class          = each.value["instance_class"]
+
+}
+
+module "elasticache" {
+  source = "git::https://github.com/hemanthtadikonda/rb-tf-elasticache.git"
+
+  env  = var.env
+  tags = var.tags
+
+  for_each        = var.elasticache
+  subnet_ids      = local.db_subnets
+  vpc_id          = local.vpc_id
+  sg_ingress_cidr = local.app_subnets_cidr
+
+  elasticache_type = each.value["elasticache_type"]
+  pg_family        = each.value["pg_family"]
+  engine           = each.value["engine"]
+  engine_version   = each.value["engine_version"]
+  db_port          = each.value["db_port"]
+  node_type        = each.value["node_type"]
+  num_cache_nodes  = each.value["num_cache_nodes"]
+
+}
+
+module "rabbitmq" {
+  source = "git::https://github.com/hemanthtadikonda/rb-tf-rabbitmq.git"
+  for_each = var.rabbitmq
+  env = var.env
+  tags = var.tags
+  vpc_id = local.vpc_id
+  subnet_id = local.db_subnets
+  sg_ingress_cidr = local.app_subnets_cidr
+  zone_id   = var.zone_id
+  instance_type = each.value["instance_type"]
+  ssh_ingress_cidr = var.ssh_ingress_cidr
+
+
+
+}
 
 module "app" {
-  depends_on = [module.alb  ]
+  depends_on = [module.alb , module.docdb ,module.elasticache,module.rds ]
   source = "git::https://github.com/hemanthtadikonda/rb-tf-app.git"
   for_each = var.app
 
