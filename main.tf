@@ -123,6 +123,7 @@ module "app" {
   default_vpc_id = var.default_vpc_id
   zone_id        = var.zone_id
   az             = var.az
+  default_vpc_cidr_block =var.default_vpc_cidr_block
 
 
   vpc_id = local.vpc_id
