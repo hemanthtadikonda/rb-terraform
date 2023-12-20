@@ -30,26 +30,26 @@ module "alb" {
 
 }
 #
-#module "docdb" {
-#  source = "git::https://github.com/hemanthtadikonda/rb-tf-docdb.git"
-#  env    = var.env
-#  tags   = var.tags
-#
-#  for_each = var.docdb
-#
-#  subnet_ids              = local.db_subnets
-#  vpc_id                  = local.vpc_id
-#  sg_ingress_cidr         = local.app_subnets_cidr
-#  pg_family               = each.value["pg_family"]
-#  engine                  = each.value["engine"]
-#  engine_version          = each.value["engine_version"]
-#  backup_retention_period = each.value["backup_retention_period"]
-#  preferred_backup_window = each.value["preferred_backup_window"]
-#  skip_final_snapshot     = each.value["skip_final_snapshot"]
-#  instance_count          = each.value ["instance_count"]
-#  instance_class          = each.value["instance_class"]
-#
-#}
+module "docdb" {
+  source = "git::https://github.com/hemanthtadikonda/rb-tf-docdb.git"
+  env    = var.env
+  tags   = var.tags
+
+  for_each = var.docdb
+
+  subnet_ids              = local.db_subnets
+  vpc_id                  = local.vpc_id
+  sg_ingress_cidr         = local.app_subnets_cidr
+  pg_family               = each.value["pg_family"]
+  engine                  = each.value["engine"]
+  engine_version          = each.value["engine_version"]
+  backup_retention_period = each.value["backup_retention_period"]
+  preferred_backup_window = each.value["preferred_backup_window"]
+  skip_final_snapshot     = each.value["skip_final_snapshot"]
+  instance_count          = each.value ["instance_count"]
+  instance_class          = each.value["instance_class"]
+
+}
 #
 #module "rds" {
 #  source = "git::https://github.com/hemanthtadikonda/rb-tf-rds.git"
@@ -113,6 +113,7 @@ module "alb" {
 #}
 
 module "app" {
+  depends_on = [module.docdb]
 #  depends_on = [module.alb , module.docdb ,module.elasticache,module.rds ]
   source = "git::https://github.com/hemanthtadikonda/rb-tf-app.git"
   for_each = var.app
