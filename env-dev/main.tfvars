@@ -39,7 +39,7 @@ alb = {
   public = {
     internal = false
     lb_type = "application"
-    sg_port = 80
+    sg_port = 443
     sg_ingress_cidr = [ "0.0.0.0/0" ]
 
 
