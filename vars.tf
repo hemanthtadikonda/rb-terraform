@@ -6,6 +6,7 @@ variable "def_route_table_id" {}
 variable "zone_id" {}
 variable "ssh_ingress_cidr" {}
 variable "az" {}
+variable "acm_certificate_arn" {}
 
 variable "vpc" {}
 variable "alb" {}

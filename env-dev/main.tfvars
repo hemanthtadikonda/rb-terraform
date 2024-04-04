@@ -5,6 +5,7 @@ env  = "qa"
 zone_id = "Z09760323G7SC2VABFTOY"
 ssh_ingress_cidr = [ "172.31.94.218/32" ]
 az = ["us-east-1a","us-east-1b"]
+acm_certificate_arn = "arn:aws:acm:us-east-1:043254050286:certificate/29e55f5c-03b9-4b51-88c3-eb52bf9f0d27"
 
 
 tags = {
